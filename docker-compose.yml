@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+ dbDev:
+   container_name: CQ-tech-test-BE-Dev
+   image: postgres
+   restart: always
+   environment:
+     POSTGRES_DB: cq-tech-test-be-dev
+     POSTGRES_USER: abdullah
+     POSTGRES_PASSWORD: haris123
+     PGDATA: /var/lib/postgresql/data
+   ports:
+     - "5432:5432"
+   volumes:
+     - dbDev-data:/var/lib/postgresql/data
+
+ dbTest:
+    container_name: CQ-tech-test-BE-Test
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: cq-tech-test-be-test
+      POSTGRES_USER: abdullah
+      POSTGRES_PASSWORD: haris123
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    volumes:
+      - dbTest-data:/var/lib/postgresql/data
+
+ pgadmin:
+   container_name: pgadmin4_container
+   image: dpage/pgadmin4:6.8
+   restart: always
+   environment:
+     PGADMIN_DEFAULT_EMAIL: hsmeh.dev@gmail.com
+     PGADMIN_DEFAULT_PASSWORD: admin
+     PGADMIN_LISTEN_PORT: 80
+   ports:
+     - "8080:80"
+   volumes:
+     - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+ dbDev-data:
+ dbTest-data:
+ pgadmin-data:
