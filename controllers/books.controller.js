@@ -16,8 +16,10 @@ async function getBooks(req, res, next) {
 
 async function patchBook(req, res, next) {
     try {
-        await updateBook(req.body)
-        return res.status(204);
+        const data = await updateBook(req.body)
+        return res.status(200).json({
+            id: req.body.book_id
+        });
     } catch (error) {
         next(error);
     }

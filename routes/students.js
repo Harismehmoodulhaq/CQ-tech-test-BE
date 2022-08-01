@@ -7,6 +7,7 @@ const {
 } = require('./../controllers/student.controller');
 
 router.get('/students', getStudents);
+// Update Routes
 router.patch('/students/:id', patchStudent);
 
 module.exports = router;

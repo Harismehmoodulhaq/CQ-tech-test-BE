@@ -15,7 +15,7 @@ const {
             }
         },
     }
-} = require('../constants/db-constants')
+} = require('../constants/db-constants');
 
 
 
