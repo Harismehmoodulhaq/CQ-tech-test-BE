@@ -15,8 +15,10 @@ async function getStudents(req, res, next) {
 
 async function patchStudent(req, res, next) {
     try {
-        await updateStudent(req.body)
-        return res.status(204);
+        const data = await updateStudent(req.body)
+        return res.status(200).json({
+            id: req.body.id
+        });
     } catch (error) {
         next(error);
     }
